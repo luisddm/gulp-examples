@@ -1,0 +1,22 @@
+{
+  "name": "gulp-example-minfy-concat",
+  "version": "1.0.0",
+  "description": "Example where we concatenate and minify CSS and JS",
+  "main": "gulpfile.js",
+  "scripts": {
+    "init": "gulp"
+  },
+  "author": {
+    "name": "Luis de Dios Martín",
+    "email": "luisddm@gmail.com",
+    "url": "https://github.com/luisddm"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.11",
+    "gulp-concat": "^2.6.0",
+    "gulp-html-replace": "^1.6.1",
+    "gulp-uglify": "^1.5.4"
+  }
+}

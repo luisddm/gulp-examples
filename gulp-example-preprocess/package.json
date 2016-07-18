@@ -2,7 +2,7 @@
   "name": "gulp-example",
   "version": "1.0.0",
   "description": "An example for gulp",
-  "main": "index.js",
+  "main": "gulpfile.js",
   "dependencies": {
     "gulp-babel": "^6.1.2"
   },
@@ -20,8 +20,12 @@
     "jshint": "^2.9.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "init": "gulp"
   },
-  "author": "Luis de Dios Martín",
+  "author": {
+    "name" : "Luis de Dios Martín",
+    "email" : "luisddm@gmail.com",
+    "url" : "https://github.com/luisddm"
+  },
   "license": "MIT"
 }

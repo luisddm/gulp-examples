@@ -13,7 +13,7 @@ gulp.task('styles', () =>
     .pipe(sass().on('error', sass.logError))
     .pipe(cleanCSS())
     .pipe(gulp.dest('dist/css'))
-  );
+);
 
 gulp.task('scripts', () =>
   gulp.src('src/js/*.js')
@@ -21,20 +21,20 @@ gulp.task('scripts', () =>
     .pipe(babel({ presets: ['es2015'] }))
     .pipe(uglify())
     .pipe(gulp.dest('dist/js'))
-  );
+);
 
 gulp.task('images', () =>
   gulp.src('src/images/*')
     .pipe(imagemin())
     .pipe(gulp.dest('dist/images'))
-  );
+);
 
 gulp.task('compress', () =>
   gulp.src('dist/*')
     .pipe(tar('package.tar'))
     .pipe(gzip())
     .pipe(gulp.dest('.'))
-  );
+);
 
 gulp.task('watch', () => {
   gulp.watch('src/scss/*.scss', 'styles');

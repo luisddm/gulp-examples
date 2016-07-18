@@ -1,0 +1,16 @@
+.click-message {
+  width: 50%;
+  font-size: 30px;
+  cursor: pointer;
+  line-height: 50px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: rgb(159, 154, 80);
+}
+
+.hello-world {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  background-color: black;
+}
