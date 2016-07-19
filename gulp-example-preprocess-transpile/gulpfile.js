@@ -1,11 +1,11 @@
 const gulp        = require('gulp');
 
 const concat      = require('gulp-concat');
-const sass        = require('gulp-sass');
 const uglify      = require('gulp-uglify');
 const cleanCss    = require('gulp-clean-css');
-const babel       = require('gulp-babel');
-const htmlReplace = require('gulp-html-replace'); // https://www.npmjs.com/package/gulp-html-replace
+const htmlReplace = require('gulp-html-replace');
+const sass        = require('gulp-sass');         // https://www.npmjs.com/package/gulp-sass
+const babel       = require('gulp-babel');        // https://www.npmjs.com/package/gulp-babel
 
 gulp.task('scss', () =>
   gulp.src('src/scss/styles.scss')
