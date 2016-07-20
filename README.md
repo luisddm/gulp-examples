@@ -2,7 +2,7 @@
 
 All the examples will work on any system with MacOSX or any distribution of Linux with Node 6 (or newer) installed. They should work as well in a Windows OS properly configured, but I haven't tested them myself. Same goes for versions of Node prior to 6.
 
-# Why use a build system?
+## Why use a build system?
 
 As you progress, your small projects start to grow into much larger applications, heavy and bloated.
 
@@ -68,7 +68,7 @@ Another reason why many developers find gulp to be a more natural alternative to
 
 However, this may be a matter of personal preference.
 
-# Dependencies
+## Dependencies
 
 We need to keep track of all the packages (or dependencies) that we use in our projects.
 
@@ -76,7 +76,7 @@ Node uses a file named package.json to store information about our project, and 
 
 In any project using gulp, it is always a great practice to create this file ahead of time so that you can easily populate your dependency list as you are installing packages or plugins.
 
-## Create a package.json file
+### Create a package.json file
 
 We will need to run npm's built-in init action:
 
@@ -90,11 +90,11 @@ You can take a look at the npm website https://www.npmjs.com/ and search among 2
 
 However, it is easier to begin with the gulp website (http://gulpjs.com/plugins/) that has links to 2500+ gulp plugins hosted in npm and approved by the gulp staff.
 
-# Installing gulp
+## Installing gulp
 
 We are now ready to begin installing Node packages. The first and most important package we will install is gulp itself.
 
-## Installing gulp locally
+### Installing gulp locally
 
 Before we install gulp, make sure you are in your project's root directory.
 
@@ -104,7 +104,7 @@ Additionally, npm has a –-save flag that saves the module to the list of devDe
 
 So, this command will use npm to contact the npm registry, and it will install gulp to our local directory. After using this command, you will notice that a new folder has been created that is named node_modules. This is where Node and npm store all of the installed packages and dependencies of your project.
 
-## Installing gulp globally
+### Installing gulp globally
 
 For many of the packages that we install, this will be all that is needed. With gulp, we must install it once again globally so that we can use gulp as a command-line application from anywhere in our  le system in any of the projects that we use. To install gulp globally, use the following command:
 
@@ -114,43 +114,43 @@ In this command, not much has changed compared to the original command where we 
 
 At first, this can be a little confusing, and for many packages it won't apply. Similar build systems actually separate these usages into two different packages that must be installed separately; one that is installed globally for command-line use and another installed locally in your project.
 
-# Anatomy of a gulp file
+## Anatomy of a gulp file
 
 Before we can begin writing tasks, we should take a look at the anatomy and structure of a gulp file. Examining the code of a gulp file will allow us to better understand what is happening as we run our tasks.
 
 The following small list of methods is all that is needed to understand how to begin writing basic tasks. They each represent a specific purpose and will act as the building blocks of our gulp file.
 
-## The task() method
+### The task() method
 
 `.task(string, function)`
 
 The basic wrapper for which we create our tasks. It takes two arguments: a string value representing the name of the task and a function that will contain the code to execute upon running that task.
 
-## The src() method
+### The src() method
 
 `.src(string || array)`
 
 The source files that we plan on modifying. It accepts either a single string or an array of strings as an argument.
 
-## The watch() method
+### The watch() method
 
 `.watch(string, array)`
 
 Looks for changes in the files. This will keep gulp running again right after any changes are made so that we don't need to rerun gulp manually any time we need to process our tasks.
 
-## The dest() method
+### The dest() method
 
 `.dest(string)`
 
 Sets the output destination of your processed file. Most often, this will be used to output our data into a dist folder that will be either shared as a library or accessed by your application.
 
-## The pipe() method
+### The pipe() method
 
 `.pipe(function)`
 
 Will allow us to pipe together smaller single-purpose plugins or applications into a pipechain. This is what gives us full control of the order in which we would need to process our files.
 
-# Including modules / plugins
+## Including modules / plugins
 
 When writing a gulp file, you will always start by including the modules or plugins you are going to use in your tasks. These can be both gulp plugins or Node modules, based on what your needs are.
 
@@ -160,18 +160,18 @@ Node modules serve a broader purpose and can be used with gulp or independently.
 
 ## Writing a task
 
-ES5
+- ES5
 
 ```javascript
 gulp.task(taskName, function() {
-     return gulp.src(srcPath)
-       .pipe(plugin1)
-       .pipe(plugin2)
-       .pipe(gulp.dest(destPath));
+  return gulp.src(srcPath)
+    .pipe(plugin1)
+    .pipe(plugin2)
+    .pipe(gulp.dest(destPath));
 });
 ```
 
-ES6+
+- ES6+
 
 ```javascript
 gulp.task(taskName, () =>
@@ -182,52 +182,9 @@ gulp.task(taskName, () =>
 );
 ```
 
-## Reducing size tasks
-- Concatenate to reduce HTTP requests
-- Minimize to reduce download payload
-- Optimize images
+# Examples
 
-One of the crucial things when it comes to improving performance is reducing the number of HTTP requests.
-
-An extra HTTP request adds dozens, or even hundreds of milliseconds when loading a website. The latency between HTTP requests, and also the limitation in web browsers in regards to how many parallel HTTP requests a web browser can make, vastly affects the loading time of a web page.
-
-When it comes to CSS and JavaScript, the general consensus is to concatenate all files of the same type into one file, and then minify them.
-
-HTTP/2 will partially address these problems by leaving an open connection until all the resources have been transferred, so we will be able to keep our files separated without affecting the latency. But the transition will take years, as the web servers need to be updated in order to support it and then be reconfigured.
-
-https://www.youtube.com/watch?v=Z-fZ92FVaf8
-
-That leaves us with images. Without a doubt, both the size and number of images used in a web page definitely poses a threat to having a fast web site.
-
-# 01 Concat
-
-ex
-
-# 02 Minimize
-
-ex
-
-# 03 Image compress
-
-ex
-
-## Processing tasks
-
-- CSS preprocessing
-- ES6+ transpiling
-
-# 04 Minimize
-
-ex
-
-# 05 Image compress
-
-ex
-
-## Development tasks
-
-- Running an HTML server
-- Automatically refreshing your browser window upon any changes to your code.
-
-
-LINKS TO THE EXAMPLES
+- [Reducing size tasks](gulp-example-minify-concat)
+- [Preprocessing](gulp-example-preprocess-transpile)
+- [Deploy](gulp-example-watch-deploy)
+- [Development](gulp-example-browsersync)
