@@ -6,8 +6,7 @@ const uglify      = require('gulp-uglify');
 const cleanCss    = require('gulp-clean-css');
 const htmlReplace = require('gulp-html-replace');
 const babel       = require('gulp-babel');
-const tar         = require('gulp-tar');       // https://www.npmjs.com/package/gulp-tar
-const gzip        = require('gulp-gzip');      // https://www.npmjs.com/package/gulp-gzip
+const browserSync = require('browser-sync');   // https://www.npmjs.com/package/browser-sync
 
 gulp.task('scss', () =>
   gulp.src('src/scss/styles.scss')
@@ -33,18 +32,16 @@ gulp.task('html', () =>
     .pipe(gulp.dest('dist'))
 );
 
-gulp.task('compress', () =>
-  gulp.src('dist/*')
-    .pipe(tar('code.tar'))   // Pack all the files together
-    .pipe(gzip())            // Compress the package using gzip
-    .pipe(gulp.dest('.'))
-);
-
-gulp.task('watch', ['html', 'scss', 'es6'], () => {
-  gulp.watch('src/scss/*.scss', ['scss']);  // Keep watching for any changes in SCSS files and rerun the css task when so
-  gulp.watch('src/js/*.js', ['es6']);       // Keep Watching for any changes in JS files and rerun the es6 task when so
+gulp.task('browser-sync', () => {
+  browserSync.init(['dist/css/**.css', 'dist/js/**.js', 'dist/**.html'], {  // Look for changes in dist directories
+    server: 'dist',  // Reload browser when any JS is modified or inject CSS when any stylesheet is modified
+  });
 });
 
-gulp.task('deploy', ['html', 'scss', 'es6', 'compress']);
+gulp.task('watch', ['html', 'scss', 'es6', 'browser-sync'], () => {
+  gulp.watch('src/scss/*.scss', ['scss']);
+  gulp.watch('src/js/*.js', ['es6']);
+  gulp.watch('src/*.html', ['html']);
+});
 
 gulp.task('default', ['html', 'scss', 'es6']);
